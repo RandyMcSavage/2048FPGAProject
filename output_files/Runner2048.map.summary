@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Thu Dec 14 13:33:33 2023
+Quartus Prime Version : 16.1.0 Build 196 10/24/2016 SJ Lite Edition
+Revision Name : Runner2048
+Top-level Entity Name : Runner2048
+Family : Cyclone IV E
+Total logic elements : 2,085
+    Total combinational functions : 2,037
+    Dedicated logic registers : 484
+Total registers : 484
+Total pins : 34
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

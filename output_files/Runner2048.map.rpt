@@ -1,0 +1,774 @@
+Analysis & Synthesis report for Runner2048
+Thu Dec 14 13:33:33 2023
+Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |Runner2048|state
+  9. State Machine - |Runner2048|NS
+ 10. Registers Removed During Synthesis
+ 11. Removed Registers Triggering Further Register Optimizations
+ 12. General Register Statistics
+ 13. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 14. Parameter Settings for User Entity Instance: Top-level Entity: |Runner2048
+ 15. Post-Synthesis Netlist Statistics for Top Partition
+ 16. Elapsed Time Per Partition
+ 17. Analysis & Synthesis Messages
+ 18. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2016  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Intel and sold by Intel or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Thu Dec 14 13:33:33 2023       ;
+; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
+; Revision Name                      ; Runner2048                                  ;
+; Top-level Entity Name              ; Runner2048                                  ;
+; Family                             ; Cyclone IV E                                ;
+; Total logic elements               ; 2,085                                       ;
+;     Total combinational functions  ; 2,037                                       ;
+;     Dedicated logic registers      ; 484                                         ;
+; Total registers                    ; 484                                         ;
+; Total pins                         ; 34                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP4CE115F29C7      ;                    ;
+; Top-level entity name                                                      ; Runner2048         ; Runner2048         ;
+; Family name                                                                ; Cyclone IV E       ; Cyclone V          ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; OpenCore Plus hardware evaluation                                          ; Enable             ; Enable             ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                 ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM Block Balancing                                                   ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; On                 ; On                 ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.1%      ;
+;     Processor 3            ;   0.1%      ;
+;     Processor 4            ;   0.1%      ;
++----------------------------+-------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                             ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                         ; Library ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------+---------+
+; runner2048.v                     ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/hamptopl/Documents/GitHub/2048FPGAProject/runner2048.v      ;         ;
+; clock_converter.v                ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/hamptopl/Documents/GitHub/2048FPGAProject/clock_converter.v ;         ;
+; vga_controller.v                 ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/hamptopl/Documents/GitHub/2048FPGAProject/vga_controller.v  ;         ;
+; blocks.v                         ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/hamptopl/Documents/GitHub/2048FPGAProject/blocks.v          ;         ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                   ;
++---------------------------------------------+-----------------+
+; Resource                                    ; Usage           ;
++---------------------------------------------+-----------------+
+; Estimated Total logic elements              ; 2,085           ;
+;                                             ;                 ;
+; Total combinational functions               ; 2037            ;
+; Logic element usage by number of LUT inputs ;                 ;
+;     -- 4 input functions                    ; 1273            ;
+;     -- 3 input functions                    ; 654             ;
+;     -- <=2 input functions                  ; 110             ;
+;                                             ;                 ;
+; Logic elements by mode                      ;                 ;
+;     -- normal mode                          ; 1755            ;
+;     -- arithmetic mode                      ; 282             ;
+;                                             ;                 ;
+; Total registers                             ; 484             ;
+;     -- Dedicated logic registers            ; 484             ;
+;     -- I/O registers                        ; 0               ;
+;                                             ;                 ;
+; I/O pins                                    ; 34              ;
+;                                             ;                 ;
+; Embedded Multiplier 9-bit elements          ; 0               ;
+;                                             ;                 ;
+; Maximum fan-out node                        ; board_clk~input ;
+; Maximum fan-out                             ; 402             ;
+; Total fan-out                               ; 9407            ;
+; Average fan-out                             ; 3.63            ;
++---------------------------------------------+-----------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                          ;
++-----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------+-----------------+--------------+
+; Compilation Hierarchy Node  ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                ; Entity Name     ; Library Name ;
++-----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------+-----------------+--------------+
+; |Runner2048                 ; 2037 (1934)         ; 484 (443)                 ; 0           ; 0            ; 0       ; 0         ; 34   ; 0            ; |Runner2048                        ; Runner2048      ; work         ;
+;    |VGA_Controller:VGA|     ; 47 (47)             ; 23 (23)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Runner2048|VGA_Controller:VGA     ; VGA_Controller  ; work         ;
+;    |blocks:bloc|            ; 55 (55)             ; 16 (16)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Runner2048|blocks:bloc            ; blocks          ; work         ;
+;    |clock_converter:clocks| ; 1 (1)               ; 2 (2)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Runner2048|clock_converter:clocks ; clock_converter ; work         ;
++-----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------+-----------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Runner2048|state                                                                                                              ;
++------------------------+-------------+------------------------+-----------------+----------------+----------------+--------------+-------------+
+; Name                   ; state.CHECK ; state.REVERSETRANSLATE ; state.MOVERIGHT ; state.MOVELEFT ; state.MOVEDOWN ; state.MOVEUP ; state.START ;
++------------------------+-------------+------------------------+-----------------+----------------+----------------+--------------+-------------+
+; state.START            ; 0           ; 0                      ; 0               ; 0              ; 0              ; 0            ; 0           ;
+; state.MOVEUP           ; 0           ; 0                      ; 0               ; 0              ; 0              ; 1            ; 1           ;
+; state.MOVEDOWN         ; 0           ; 0                      ; 0               ; 0              ; 1              ; 0            ; 1           ;
+; state.MOVELEFT         ; 0           ; 0                      ; 0               ; 1              ; 0              ; 0            ; 1           ;
+; state.MOVERIGHT        ; 0           ; 0                      ; 1               ; 0              ; 0              ; 0            ; 1           ;
+; state.REVERSETRANSLATE ; 0           ; 1                      ; 0               ; 0              ; 0              ; 0            ; 1           ;
+; state.CHECK            ; 1           ; 0                      ; 0               ; 0              ; 0              ; 0            ; 1           ;
++------------------------+-------------+------------------------+-----------------+----------------+----------------+--------------+-------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Runner2048|NS                                                                                         ;
++---------------------+----------+---------------------+--------------+-------------+-------------+-----------+----------+
+; Name                ; NS.CHECK ; NS.REVERSETRANSLATE ; NS.MOVERIGHT ; NS.MOVELEFT ; NS.MOVEDOWN ; NS.MOVEUP ; NS.START ;
++---------------------+----------+---------------------+--------------+-------------+-------------+-----------+----------+
+; NS.START            ; 0        ; 0                   ; 0            ; 0           ; 0           ; 0         ; 0        ;
+; NS.MOVEUP           ; 0        ; 0                   ; 0            ; 0           ; 0           ; 1         ; 1        ;
+; NS.MOVEDOWN         ; 0        ; 0                   ; 0            ; 0           ; 1           ; 0         ; 1        ;
+; NS.MOVELEFT         ; 0        ; 0                   ; 0            ; 1           ; 0           ; 0         ; 1        ;
+; NS.MOVERIGHT        ; 0        ; 0                   ; 1            ; 0           ; 0           ; 0         ; 1        ;
+; NS.REVERSETRANSLATE ; 0        ; 1                   ; 0            ; 0           ; 0           ; 0         ; 1        ;
+; NS.CHECK            ; 1        ; 0                   ; 0            ; 0           ; 0           ; 0         ; 1        ;
++---------------------+----------+---------------------+--------------+-------------+-------------+-----------+----------+
+
+
++----------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                               ;
++-----------------------------------------+----------------------------------------+
+; Register name                           ; Reason for Removal                     ;
++-----------------------------------------+----------------------------------------+
+; blocks:bloc|block15Y[0][0]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block15Y[0][1]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block15Y[0][2]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block15Y[0][3]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block15Y[0][4]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block15Y[0][5]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block15Y[0][6]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block15Y[0][7]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block15Y[0][8]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block15X[0][0]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block15X[0][1]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block15X[0][2]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block15X[0][3]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block15X[0][4]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block15X[0][5]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block15X[0][6]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block15X[0][7]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block15X[0][8]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block15X[0][9]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block14Y[0][0]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block14Y[0][1]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block14Y[0][2]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block14Y[0][3]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block14Y[0][4]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block14Y[0][5]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block14Y[0][6]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block14Y[0][7]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block14Y[0][8]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block14X[0][0]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block14X[0][1]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block14X[0][2]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block14X[0][3]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block14X[0][4]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block14X[0][5]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block14X[0][6]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block14X[0][7]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block14X[0][8]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block14X[0][9]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block13Y[0][0]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block13Y[0][1]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block13Y[0][2]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block13Y[0][3]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block13Y[0][4]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block13Y[0][5]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block13Y[0][6]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block13Y[0][7]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block13Y[0][8]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block13X[0][0]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block13X[0][1]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block13X[0][2]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block13X[0][3]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block13X[0][4]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block13X[0][5]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block13X[0][6]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block13X[0][7]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block13X[0][8]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block13X[0][9]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block12Y[0][0]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block12Y[0][1]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block12Y[0][2]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block12Y[0][3]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block12Y[0][4]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block12Y[0][5]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block12Y[0][6]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block12Y[0][7]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block12Y[0][8]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block12X[0][0]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block12X[0][1]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block12X[0][2]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block12X[0][3]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block12X[0][4]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block12X[0][5]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block12X[0][6]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block12X[0][7]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block12X[0][8]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block12X[0][9]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block11Y[0][0]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block11Y[0][1]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block11Y[0][2]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block11Y[0][3]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block11Y[0][4]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block11Y[0][5]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block11Y[0][6]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block11Y[0][7]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block11Y[0][8]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block11X[0][0]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block11X[0][1]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block11X[0][2]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block11X[0][3]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block11X[0][4]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block11X[0][5]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block11X[0][6]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block11X[0][7]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block11X[0][8]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block11X[0][9]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block10Y[0][0]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block10Y[0][1]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block10Y[0][2]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block10Y[0][3]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block10Y[0][4]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block10Y[0][5]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block10Y[0][6]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block10Y[0][7]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block10Y[0][8]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block10X[0][0]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block10X[0][1]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block10X[0][2]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block10X[0][3]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block10X[0][4]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block10X[0][5]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block10X[0][6]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block10X[0][7]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block10X[0][8]              ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block10X[0][9]              ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block9Y[0][0]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block9Y[0][1]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block9Y[0][2]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block9Y[0][3]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block9Y[0][4]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block9Y[0][5]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block9Y[0][6]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block9Y[0][7]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block9Y[0][8]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block9X[0][0]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block9X[0][1]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block9X[0][2]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block9X[0][3]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block9X[0][4]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block9X[0][5]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block9X[0][6]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block9X[0][7]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block9X[0][8]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block9X[0][9]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block8Y[0][0]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block8Y[0][1]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block8Y[0][2]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block8Y[0][3]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block8Y[0][4]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block8Y[0][5]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block8Y[0][6]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block8Y[0][7]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block8Y[0][8]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block8X[0][0]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block8X[0][1]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block8X[0][2]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block8X[0][3]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block8X[0][4]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block8X[0][5]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block8X[0][6]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block8X[0][7]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block8X[0][8]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block8X[0][9]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block7Y[0][0]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block7Y[0][1]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block7Y[0][2]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block7Y[0][3]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block7Y[0][4]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block7Y[0][5]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block7Y[0][6]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block7Y[0][7]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block7Y[0][8]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block7X[0][0]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block7X[0][1]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block7X[0][2]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block7X[0][3]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block7X[0][4]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block7X[0][5]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block7X[0][6]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block7X[0][7]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block7X[0][8]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block7X[0][9]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block6Y[0][0]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block6Y[0][1]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block6Y[0][2]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block6Y[0][3]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block6Y[0][4]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block6Y[0][5]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block6Y[0][6]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block6Y[0][7]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block6Y[0][8]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block6X[0][0]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block6X[0][1]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block6X[0][2]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block6X[0][3]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block6X[0][4]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block6X[0][5]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block6X[0][6]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block6X[0][7]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block6X[0][8]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block6X[0][9]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block5Y[0][0]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block5Y[0][1]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block5Y[0][2]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block5Y[0][3]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block5Y[0][4]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block5Y[0][5]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block5Y[0][6]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block5Y[0][7]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block5Y[0][8]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block5X[0][0]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block5X[0][1]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block5X[0][2]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block5X[0][3]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block5X[0][4]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block5X[0][5]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block5X[0][6]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block5X[0][7]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block5X[0][8]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block5X[0][9]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block4Y[0][0]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block4Y[0][1]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block4Y[0][2]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block4Y[0][3]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block4Y[0][4]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block4Y[0][5]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block4Y[0][6]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block4Y[0][7]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block4Y[0][8]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block4X[0][0]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block4X[0][1]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block4X[0][2]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block4X[0][3]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block4X[0][4]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block4X[0][5]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block4X[0][6]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block4X[0][7]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block4X[0][8]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block4X[0][9]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block3Y[0][0]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block3Y[0][1]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block3Y[0][2]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block3Y[0][3]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block3Y[0][4]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block3Y[0][5]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block3Y[0][6]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block3Y[0][7]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block3Y[0][8]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block3X[0][0]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block3X[0][1]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block3X[0][2]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block3X[0][3]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block3X[0][4]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block3X[0][5]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block3X[0][6]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block3X[0][7]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block3X[0][8]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block3X[0][9]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block2Y[0][0]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block2Y[0][1]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block2Y[0][2]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block2Y[0][3]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block2Y[0][4]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block2Y[0][5]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block2Y[0][6]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block2Y[0][7]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block2Y[0][8]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block2X[0][0]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block2X[0][1]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block2X[0][2]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block2X[0][3]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block2X[0][4]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block2X[0][5]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block2X[0][6]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block2X[0][7]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block2X[0][8]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block2X[0][9]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block1Y[0][0]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block1Y[0][1]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block1Y[0][2]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block1Y[0][3]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block1Y[0][4]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block1Y[0][5]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block1Y[0][6]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block1Y[0][7]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block1Y[0][8]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block1X[0][0]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block1X[0][1]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block1X[0][2]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block1X[0][3]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block1X[0][4]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block1X[0][5]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block1X[0][6]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block1X[0][7]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block1X[0][8]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block1X[0][9]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block0Y[0][0]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block0Y[0][1]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block0Y[0][2]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block0Y[0][3]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block0Y[0][4]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block0Y[0][5]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block0Y[0][6]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block0Y[0][7]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block0Y[0][8]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block0X[0][0]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block0X[0][1]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block0X[0][2]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block0X[0][3]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block0X[0][4]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block0X[0][5]               ; Stuck at VCC due to stuck port data_in ;
+; blocks:bloc|block0X[0][6]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block0X[0][7]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block0X[0][8]               ; Stuck at GND due to stuck port data_in ;
+; blocks:bloc|block0X[0][9]               ; Stuck at GND due to stuck port data_in ;
+; clock_converter:clocks|count[0..2]      ; Lost fanout                            ;
+; clock_converter:clocks|update           ; Lost fanout                            ;
+; clock_converter:clocks|count[3..21]     ; Lost fanout                            ;
+; terminate[1..9,11..31]                  ; Merged with terminate[10]              ;
+; state~4                                 ; Lost fanout                            ;
+; state~5                                 ; Lost fanout                            ;
+; state~6                                 ; Lost fanout                            ;
+; NS~4                                    ; Lost fanout                            ;
+; NS~5                                    ; Lost fanout                            ;
+; NS~6                                    ; Lost fanout                            ;
+; NS~7                                    ; Lost fanout                            ;
+; ran                                     ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 365 ;                                        ;
++-----------------------------------------+----------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                       ;
++---------------------------------+---------------------------+---------------------------------------------------------------------+
+; Register name                   ; Reason for Removal        ; Registers Removed due to This Register                              ;
++---------------------------------+---------------------------+---------------------------------------------------------------------+
+; clock_converter:clocks|count[2] ; Lost Fanouts              ; clock_converter:clocks|count[7], clock_converter:clocks|count[9],   ;
+;                                 ;                           ; clock_converter:clocks|count[12], clock_converter:clocks|count[16], ;
+;                                 ;                           ; clock_converter:clocks|count[17], clock_converter:clocks|count[20]  ;
+; blocks:bloc|block15Y[0][0]      ; Stuck at GND              ; clock_converter:clocks|update                                       ;
+;                                 ; due to stuck port data_in ;                                                                     ;
++---------------------------------+---------------------------+---------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 484   ;
+; Number of registers using Synchronous Clear  ; 136   ;
+; Number of registers using Synchronous Load   ; 88    ;
+; Number of registers using Asynchronous Clear ; 398   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 396   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; 7:1                ; 12 bits   ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; Yes        ; |Runner2048|vert0[3][9]    ;
+; 7:1                ; 12 bits   ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; Yes        ; |Runner2048|vert0[0][6]    ;
+; 7:1                ; 12 bits   ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; Yes        ; |Runner2048|vert1[3][11]   ;
+; 7:1                ; 12 bits   ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; Yes        ; |Runner2048|vert1[0][10]   ;
+; 7:1                ; 12 bits   ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; Yes        ; |Runner2048|vert2[3][7]    ;
+; 7:1                ; 12 bits   ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; Yes        ; |Runner2048|vert2[0][2]    ;
+; 7:1                ; 12 bits   ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; Yes        ; |Runner2048|vert3[3][0]    ;
+; 7:1                ; 12 bits   ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; Yes        ; |Runner2048|vert3[0][4]    ;
+; 8:1                ; 12 bits   ; 60 LEs        ; 24 LEs               ; 36 LEs                 ; Yes        ; |Runner2048|row0[0][0]     ;
+; 8:1                ; 12 bits   ; 60 LEs        ; 24 LEs               ; 36 LEs                 ; Yes        ; |Runner2048|row0[3][10]    ;
+; 8:1                ; 12 bits   ; 60 LEs        ; 24 LEs               ; 36 LEs                 ; Yes        ; |Runner2048|row1[0][9]     ;
+; 8:1                ; 12 bits   ; 60 LEs        ; 24 LEs               ; 36 LEs                 ; Yes        ; |Runner2048|row1[3][6]     ;
+; 8:1                ; 12 bits   ; 60 LEs        ; 24 LEs               ; 36 LEs                 ; Yes        ; |Runner2048|row2[0][1]     ;
+; 8:1                ; 12 bits   ; 60 LEs        ; 24 LEs               ; 36 LEs                 ; Yes        ; |Runner2048|row2[3][4]     ;
+; 8:1                ; 12 bits   ; 60 LEs        ; 24 LEs               ; 36 LEs                 ; Yes        ; |Runner2048|row3[0][5]     ;
+; 8:1                ; 12 bits   ; 60 LEs        ; 24 LEs               ; 36 LEs                 ; Yes        ; |Runner2048|row3[3][1]     ;
+; 9:1                ; 12 bits   ; 72 LEs        ; 24 LEs               ; 48 LEs                 ; Yes        ; |Runner2048|vert0[2][11]   ;
+; 9:1                ; 12 bits   ; 72 LEs        ; 24 LEs               ; 48 LEs                 ; Yes        ; |Runner2048|vert0[1][2]    ;
+; 9:1                ; 12 bits   ; 72 LEs        ; 24 LEs               ; 48 LEs                 ; Yes        ; |Runner2048|vert1[2][6]    ;
+; 9:1                ; 12 bits   ; 72 LEs        ; 24 LEs               ; 48 LEs                 ; Yes        ; |Runner2048|vert1[1][11]   ;
+; 9:1                ; 12 bits   ; 72 LEs        ; 24 LEs               ; 48 LEs                 ; Yes        ; |Runner2048|vert2[2][0]    ;
+; 9:1                ; 12 bits   ; 72 LEs        ; 24 LEs               ; 48 LEs                 ; Yes        ; |Runner2048|vert2[1][10]   ;
+; 9:1                ; 12 bits   ; 72 LEs        ; 24 LEs               ; 48 LEs                 ; Yes        ; |Runner2048|vert3[2][3]    ;
+; 9:1                ; 12 bits   ; 72 LEs        ; 24 LEs               ; 48 LEs                 ; Yes        ; |Runner2048|vert3[1][6]    ;
+; 10:1               ; 12 bits   ; 72 LEs        ; 36 LEs               ; 36 LEs                 ; Yes        ; |Runner2048|row0[1][6]     ;
+; 10:1               ; 12 bits   ; 72 LEs        ; 36 LEs               ; 36 LEs                 ; Yes        ; |Runner2048|row0[2][6]     ;
+; 10:1               ; 12 bits   ; 72 LEs        ; 36 LEs               ; 36 LEs                 ; Yes        ; |Runner2048|row1[1][9]     ;
+; 10:1               ; 12 bits   ; 72 LEs        ; 36 LEs               ; 36 LEs                 ; Yes        ; |Runner2048|row1[2][11]    ;
+; 10:1               ; 12 bits   ; 72 LEs        ; 36 LEs               ; 36 LEs                 ; Yes        ; |Runner2048|row2[1][4]     ;
+; 10:1               ; 12 bits   ; 72 LEs        ; 36 LEs               ; 36 LEs                 ; Yes        ; |Runner2048|row2[2][8]     ;
+; 10:1               ; 12 bits   ; 72 LEs        ; 36 LEs               ; 36 LEs                 ; Yes        ; |Runner2048|row3[1][0]     ;
+; 10:1               ; 12 bits   ; 72 LEs        ; 36 LEs               ; 36 LEs                 ; Yes        ; |Runner2048|row3[2][10]    ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 10 LEs               ; 2 LEs                  ; No         ; |Runner2048|terminate      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |Runner2048 ;
++------------------+-------+-------------------------------------------------+
+; Parameter Name   ; Value ; Type                                            ;
++------------------+-------+-------------------------------------------------+
+; START            ; 000   ; Unsigned Binary                                 ;
+; MOVEUP           ; 001   ; Unsigned Binary                                 ;
+; MOVEDOWN         ; 010   ; Unsigned Binary                                 ;
+; MOVELEFT         ; 011   ; Unsigned Binary                                 ;
+; MOVERIGHT        ; 100   ; Unsigned Binary                                 ;
+; REVERSETRANSLATE ; 101   ; Unsigned Binary                                 ;
+; CHECK            ; 111   ; Unsigned Binary                                 ;
++------------------+-------+-------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 34                          ;
+; cycloneiii_ff         ; 484                         ;
+;     CLR               ; 14                          ;
+;     ENA               ; 12                          ;
+;     ENA CLR           ; 248                         ;
+;     ENA CLR SCLR      ; 48                          ;
+;     ENA CLR SCLR SLD  ; 88                          ;
+;     plain             ; 74                          ;
+; cycloneiii_lcell_comb ; 2039                        ;
+;     arith             ; 282                         ;
+;         2 data inputs ; 18                          ;
+;         3 data inputs ; 264                         ;
+;     normal            ; 1757                        ;
+;         1 data inputs ; 5                           ;
+;         2 data inputs ; 89                          ;
+;         3 data inputs ; 390                         ;
+;         4 data inputs ; 1273                        ;
+;                       ;                             ;
+; Max LUT depth         ; 13.30                       ;
+; Average LUT depth     ; 8.72                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:04     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
+    Info: Processing started: Thu Dec 14 13:33:19 2023
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Runner2048 -c Runner2048
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Warning (12125): Using design file runner2048.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: Runner2048 File: C:/Users/hamptopl/Documents/GitHub/2048FPGAProject/runner2048.v Line: 1
+Info (12127): Elaborating entity "Runner2048" for the top level hierarchy
+Warning (10858): Verilog HDL warning at runner2048.v(24): object game_over_text used but never assigned File: C:/Users/hamptopl/Documents/GitHub/2048FPGAProject/runner2048.v Line: 24
+Warning (10858): Verilog HDL warning at runner2048.v(25): object win_text used but never assigned File: C:/Users/hamptopl/Documents/GitHub/2048FPGAProject/runner2048.v Line: 25
+Warning (10030): Net "game_over_text" at runner2048.v(24) has no driver or initial value, using a default initial value '0' File: C:/Users/hamptopl/Documents/GitHub/2048FPGAProject/runner2048.v Line: 24
+Warning (10030): Net "win_text" at runner2048.v(25) has no driver or initial value, using a default initial value '0' File: C:/Users/hamptopl/Documents/GitHub/2048FPGAProject/runner2048.v Line: 25
+Warning (12125): Using design file clock_converter.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: clock_converter File: C:/Users/hamptopl/Documents/GitHub/2048FPGAProject/clock_converter.v Line: 1
+Info (12128): Elaborating entity "clock_converter" for hierarchy "clock_converter:clocks" File: C:/Users/hamptopl/Documents/GitHub/2048FPGAProject/runner2048.v Line: 7
+Warning (12125): Using design file vga_controller.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: VGA_Controller File: C:/Users/hamptopl/Documents/GitHub/2048FPGAProject/vga_controller.v Line: 1
+Info (12128): Elaborating entity "VGA_Controller" for hierarchy "VGA_Controller:VGA" File: C:/Users/hamptopl/Documents/GitHub/2048FPGAProject/runner2048.v Line: 15
+Warning (12125): Using design file blocks.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: blocks File: C:/Users/hamptopl/Documents/GitHub/2048FPGAProject/blocks.v Line: 1
+Info (12128): Elaborating entity "blocks" for hierarchy "blocks:bloc" File: C:/Users/hamptopl/Documents/GitHub/2048FPGAProject/runner2048.v Line: 49
+Warning (10230): Verilog HDL assignment warning at blocks.v(115): truncated value with size 11 to match size of target (9) File: C:/Users/hamptopl/Documents/GitHub/2048FPGAProject/blocks.v Line: 115
+Warning (10230): Verilog HDL assignment warning at blocks.v(117): truncated value with size 11 to match size of target (9) File: C:/Users/hamptopl/Documents/GitHub/2048FPGAProject/blocks.v Line: 117
+Warning (10230): Verilog HDL assignment warning at blocks.v(119): truncated value with size 11 to match size of target (9) File: C:/Users/hamptopl/Documents/GitHub/2048FPGAProject/blocks.v Line: 119
+Warning (10230): Verilog HDL assignment warning at blocks.v(121): truncated value with size 11 to match size of target (9) File: C:/Users/hamptopl/Documents/GitHub/2048FPGAProject/blocks.v Line: 121
+Warning (10230): Verilog HDL assignment warning at blocks.v(123): truncated value with size 11 to match size of target (9) File: C:/Users/hamptopl/Documents/GitHub/2048FPGAProject/blocks.v Line: 123
+Warning (10230): Verilog HDL assignment warning at blocks.v(125): truncated value with size 11 to match size of target (9) File: C:/Users/hamptopl/Documents/GitHub/2048FPGAProject/blocks.v Line: 125
+Warning (10230): Verilog HDL assignment warning at blocks.v(127): truncated value with size 11 to match size of target (9) File: C:/Users/hamptopl/Documents/GitHub/2048FPGAProject/blocks.v Line: 127
+Warning (10230): Verilog HDL assignment warning at blocks.v(129): truncated value with size 11 to match size of target (9) File: C:/Users/hamptopl/Documents/GitHub/2048FPGAProject/blocks.v Line: 129
+Warning (10230): Verilog HDL assignment warning at blocks.v(131): truncated value with size 11 to match size of target (9) File: C:/Users/hamptopl/Documents/GitHub/2048FPGAProject/blocks.v Line: 131
+Warning (10230): Verilog HDL assignment warning at blocks.v(133): truncated value with size 11 to match size of target (9) File: C:/Users/hamptopl/Documents/GitHub/2048FPGAProject/blocks.v Line: 133
+Warning (10230): Verilog HDL assignment warning at blocks.v(135): truncated value with size 11 to match size of target (9) File: C:/Users/hamptopl/Documents/GitHub/2048FPGAProject/blocks.v Line: 135
+Warning (10230): Verilog HDL assignment warning at blocks.v(137): truncated value with size 11 to match size of target (9) File: C:/Users/hamptopl/Documents/GitHub/2048FPGAProject/blocks.v Line: 137
+Warning (10230): Verilog HDL assignment warning at blocks.v(139): truncated value with size 11 to match size of target (9) File: C:/Users/hamptopl/Documents/GitHub/2048FPGAProject/blocks.v Line: 139
+Warning (10230): Verilog HDL assignment warning at blocks.v(141): truncated value with size 11 to match size of target (9) File: C:/Users/hamptopl/Documents/GitHub/2048FPGAProject/blocks.v Line: 141
+Warning (10230): Verilog HDL assignment warning at blocks.v(143): truncated value with size 11 to match size of target (9) File: C:/Users/hamptopl/Documents/GitHub/2048FPGAProject/blocks.v Line: 143
+Warning (10230): Verilog HDL assignment warning at blocks.v(145): truncated value with size 11 to match size of target (9) File: C:/Users/hamptopl/Documents/GitHub/2048FPGAProject/blocks.v Line: 145
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 30 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file C:/Users/hamptopl/Documents/GitHub/2048FPGAProject/output_files/Runner2048.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 2119 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 6 input pins
+    Info (21059): Implemented 28 output pins
+    Info (21061): Implemented 2085 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 25 warnings
+    Info: Peak virtual memory: 4799 megabytes
+    Info: Processing ended: Thu Dec 14 13:33:33 2023
+    Info: Elapsed time: 00:00:14
+    Info: Total CPU time (on all processors): 00:00:28
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/Users/hamptopl/Documents/GitHub/2048FPGAProject/output_files/Runner2048.map.smsg.
+
+
